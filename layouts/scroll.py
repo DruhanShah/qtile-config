@@ -146,13 +146,16 @@ class Scrolling(base.Layout):
                 self.current = i
                 break
 
-    def add_column(self, width):
+    def add_column(self, width, idx=-1):
         """
         Add a new column of given width, and increase `maxwidth` accordingly
         """
-        c = Column(-1, width)
+        c = Column(idx, width)
         self.maxwidth += width
-        self.columns.append(c)
+        if idx == -1:
+            self.columns.append(c)
+        else:
+            self.columns.insert(idx, c)
         self.focus(self.cc.cw)
         return c
 
@@ -338,15 +341,20 @@ class Scrolling(base.Layout):
         client = cur.cw
         if client is None:
             return
+
         if self.current > 0:
-            self.current -= 1
-            new = self.cc
-            new.add_client(client, cur.heights[client])
-            cur.remove(client)
-            if len(cur) == 0:
+            if len(cur) == 1:
+                self.current -= 1
+                new = self.cc
+                new.add_client(client, cur.heights[client])
+                cur.remove(client)
                 self.remove_column(cur)
+            else:
+                new = self.add_column(self.get_width(client), self.current)
+                new.add_client(client, cur.heights[client])
+                cur.remove(client)
         elif len(cur) > 1:
-            new = self.add_column(self.get_width(client))
+            new = self.add_column(self.get_width(client), 0)
             new.add_client(client, cur.heights[client])
             cur.remove(client)
             self.current = 0
@@ -361,13 +369,18 @@ class Scrolling(base.Layout):
         client = cur.cw
         if client is None:
             return
+
         if self.current + 1 < len(self.columns):
             self.current += 1
-            new = self.cc
-            new.add_client(client, cur.heights[client])
-            cur.remove(client)
-            if len(cur) == 0:
+            if len(cur) == 1:
+                new = self.cc
+                new.add_client(client, cur.heights[client])
+                cur.remove(client)
                 self.remove_column(cur)
+            else:
+                new = self.add_column(self.get_width(client), self.current)
+                new.add_client(client, cur.heights[client])
+                cur.remove(client)
         elif len(cur) > 1:
             new = self.add_column(self.get_width(client))
             new.add_client(client, cur.heights[client])
@@ -472,4 +485,3 @@ class Scrolling(base.Layout):
     def reset_scroll(self):
         self.viewx = 0
         self.group.focus(self.cc.cw)
-
