@@ -10,4 +10,10 @@ Features of note include:
 ## Dependencies
 
 Python libraries:
-    - TBD
+
+    psutil
+    pulsectl_asyncio
+
+Additional packages (`pacman` if using Arch, `pip` otherwise):
+
+    qtile-extras
