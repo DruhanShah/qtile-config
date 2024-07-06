@@ -1,0 +1,50 @@
+from qtile_extras.popup import toolkit as popup
+from utils import COLORSCHEME
+
+calendar_layout = popup.PopupAbsoluteLayout(
+    width=320,
+    height=360,
+    controls=[
+        popup.PopupText(
+            name="today",
+            font="Fira Sans Bold",
+            fontsize=36,
+            foreground=COLORSCHEME["TEXT"],
+            background=COLORSCHEME["CRUST"],
+            h_align="center",
+            v_align="middle",
+            pos_x=0,
+            pos_y=0,
+            width=320,
+            height=150,
+        ),
+        popup.PopupText(
+            name="weekdays",
+            font="JetBrains Mono ExtraBold",
+            fontsize=16,
+            foreground=COLORSCHEME["LAVENDER"],
+            h_align="left",
+            v_align="bottom",
+            pos_x=25,
+            pos_y=160,
+            width=320,
+            height=30,
+            markup=True,
+        ),
+        popup.PopupText(
+            name="calendar",
+            font="JetBrains Mono",
+            fontsize=16,
+            foreground=COLORSCHEME["TEXT"],
+            h_align="left",
+            v_align="top",
+            pos_x=25,
+            pos_y=200,
+            width=320,
+            height=160,
+            markup=True,
+        ),
+    ],
+    background=COLORSCHEME["MANTLE"],
+    close_on_click=True,
+)
