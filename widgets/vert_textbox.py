@@ -1,17 +1,13 @@
+import os
 from libqtile.widget import base
-from qtile_extras.widget.mixins import ExtendedPopupMixin
+
+home = os.path.expanduser("~")
 
 
-class V_Power(base._TextBox, ExtendedPopupMixin):
+class V_TextBox(base._TextBox):
 
     def __init__(self, **config):
         base._TextBox.__init__(self, **config)
-        ExtendedPopupMixin.__init__(self, **config)
-        self.add_defaults(ExtendedPopupMixin.defaults)
-        self.add_callbacks({"Button1": self.show_popup})
-
-    def update_popup(self):
-        self.extended_popup.update_controls()
 
     def calculate_length(self):
         if self.text:

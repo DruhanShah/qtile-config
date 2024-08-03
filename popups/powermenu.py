@@ -1,5 +1,5 @@
 import os
-from libqtile import qtile
+from libqtile.lazy import lazy
 from qtile_extras.popup import toolkit as popup
 from utils import COLORSCHEME
 
@@ -22,7 +22,7 @@ powermenu_layout = popup.PopupAbsoluteLayout(
             font="Symbols Nerd Font",
             fontsize=32,
             mouse_callbacks={
-                "Button1": lambda: qtile.spawn(f"{home}/.local/bin/lock")
+                "Button1": lazy.spawn(f"{home}/.local/bin/lock")
             },
         ),
         popup.PopupText(
@@ -38,8 +38,7 @@ powermenu_layout = popup.PopupAbsoluteLayout(
             font="Symbols Nerd Font",
             fontsize=32,
             mouse_callbacks={
-                "Button1":
-                    lambda: qtile.spawn("qtile cmd-obj -o cmd -f shutdown")
+                "Button1": lazy.shutdown()
             },
         ),
         popup.PopupText(
@@ -55,7 +54,7 @@ powermenu_layout = popup.PopupAbsoluteLayout(
             font="Symbols Nerd Font",
             fontsize=32,
             mouse_callbacks={
-                "Button1": lambda: qtile.spawn("restart")
+                "Button1": lazy.spawn("systemctl reboot")
             },
         ),
         popup.PopupText(
@@ -71,7 +70,7 @@ powermenu_layout = popup.PopupAbsoluteLayout(
             font="Symbols Nerd Font",
             fontsize=32,
             mouse_callbacks={
-                "Button1": lambda: qtile.spawn("shutdown now")
+                "Button1": lazy.spawn("systemctl poweroff")
             },
         ),
     ],

@@ -59,7 +59,7 @@ class V_Internet(base.ThreadPoolText):
 
         self.layout.draw(
             (self.bar.width // 2) - (self.layout.width // 2),
-            0,
+            self.actual_padding,
         )
         self.length = self.calculate_length()
         self.drawer.draw(

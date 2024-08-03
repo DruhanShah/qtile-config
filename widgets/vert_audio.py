@@ -9,7 +9,6 @@ class V_Audio(widget.PulseVolume, ExtendedPopupMixin):
     orientations = base.ORIENTATION_BOTH
 
     def __init__(self, **config):
-        self.theme_path = None
         widget.PulseVolume.__init__(self, **config)
         ExtendedPopupMixin.__init__(self, **config)
         self.add_defaults(ExtendedPopupMixin.defaults)
@@ -28,9 +27,9 @@ class V_Audio(widget.PulseVolume, ExtendedPopupMixin):
             self.text = self.emoji_list[0]
         elif self.volume <= 30:
             self.text = self.emoji_list[1]
-        elif self.volume < 80:
+        elif self.volume <= 80:
             self.text = self.emoji_list[2]
-        elif self.volume >= 80:
+        elif self.volume > 80:
             self.text = self.emoji_list[3]
 
     def calculate_length(self):
@@ -50,7 +49,7 @@ class V_Audio(widget.PulseVolume, ExtendedPopupMixin):
 
         self.layout.draw(
             (size // 2) - (self.layout.width // 2),
-            0,
+            self.actual_padding,
         )
         self.drawer.ctx.restore()
         self.drawer.draw(

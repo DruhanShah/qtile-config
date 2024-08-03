@@ -36,8 +36,10 @@ class V_DateTime(widget.Clock, ExtendedPopupMixin):
 
         month_str = today.strftime("%B")
         today_str = f"{today.day} {month_str}"
+        today_day = f"{today.strftime('%A').upper()}"
         self.extended_popup.update_controls(
-            today=today_str,
+            todate=today_str,
+            today=today_day,
             weekdays=weekdays,
             calendar=s,
         )
@@ -59,7 +61,7 @@ class V_DateTime(widget.Clock, ExtendedPopupMixin):
 
         self.layout.draw(
             (size // 2) - (self.layout.width // 2),
-            0,
+            self.actual_padding,
         )
         self.drawer.ctx.restore()
         self.drawer.draw(

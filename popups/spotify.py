@@ -16,7 +16,7 @@ spotify_layout = popup.PopupAbsoluteLayout(
         ),
         popup.PopupText(
             name="title",
-            font="Fira Sans ExtraBold",
+            font="Iosevka Etoile ExtraBold",
             fontsize=24,
             foreground=COLORSCHEME["TEXT"],
             pos_x=160,
@@ -27,8 +27,8 @@ spotify_layout = popup.PopupAbsoluteLayout(
         ),
         popup.PopupText(
             name="artist",
-            font="Fira Sans Medium",
-            fontsize=15,
+            font="Iosevka Aile Medium",
+            fontsize=13,
             foreground=COLORSCHEME["SUBTEXT 1"],
             pos_x=160,
             pos_y=80,

@@ -74,7 +74,7 @@ class V_Battery(widget.Battery, ExtendedPopupMixin):
 
         self.layout.draw(
             (size // 2) - (self.layout.width // 2),
-            0,
+            self.actual_padding,
         )
         self.drawer.ctx.restore()
         self.drawer.draw(
