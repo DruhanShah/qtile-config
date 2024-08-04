@@ -17,7 +17,7 @@ ctrl = "control"
 shift = "shift"
 alt = "mod1"
 vb_command = f"{home}/.config/qtile/scripts/dunst-vb.sh"
-wallpaper = f"{home}/Wallpapers/neuschwanstein.jpg"
+wallpaper = f"{home}/Wallpapers/nature-of-fear.png"
 rofi_script = f"{home}/.config/rofi/scripts"
 
 widget_defaults = custom_widgets.widget_defaults
@@ -34,7 +34,6 @@ screens = [
         ),
     )
 ]
-
 
 layouts = [
     custom_layouts.Scrolling(
@@ -135,6 +134,15 @@ keys = [
         Key([], "q", lazy.spawn("rofi -show calc")),
         Key([], "n", lazy.spawn(f"{rofi_script}/nerd-fonts.sh")),
         Key([], "z", lazy.spawn(f"{rofi_script}/zotero.sh")),
+    ]),
+
+    KeyChord([mod], "w", [
+        Key([], "6", lazy.widget["v_battery"].show_popup()),
+        Key([], "5", lazy.widget["v_spotify"].show_popup()),
+        Key([], "4", lazy.widget["v_bright"].show_popup()),
+        Key([], "3", lazy.widget["v_audio"].show_popup()),
+        Key([], "2", lazy.widget["v_datetime"].show_popup()),
+        Key([], "1", lazy.widget["v_power"].show_popup()),
     ]),
 
     Key([mod], "F9", toggle_trackpad),

@@ -46,7 +46,7 @@ widget_list = [
         popup_show_args={
             "relative_to": 7,
             "relative_to_bar": True,
-            "x": 12,
+            "x": 16,
             "y": -240,
         },
         format="{char}",
@@ -66,7 +66,7 @@ widget_list = [
         popup_show_args={
             "relative_to": 7,
             "relative_to_bar": True,
-            "x": 12,
+            "x": 16,
             "y": -140,
         },
         text="",
@@ -80,7 +80,7 @@ widget_list = [
         popup_show_args={
             "relative_to": 7,
             "relative_to_bar": True,
-            "x": 12,
+            "x": 16,
             "y": -140,
         },
         text="󰃟",
@@ -94,7 +94,7 @@ widget_list = [
         popup_show_args={
             "relative_to": 7,
             "relative_to_bar": True,
-            "x": 12,
+            "x": 16,
             "y": -120,
         },
         foreground=COLORSCHEME["FLAMINGO"],
@@ -111,8 +111,8 @@ widget_list = [
         popup_show_args={
             "relative_to": 7,
             "relative_to_bar": True,
-            "x": 12,
-            "y": -12,
+            "x": 16,
+            "y": -16,
         },
         format="%H\n%M\n%S",
         foreground=COLORSCHEME["TEXT"],
@@ -127,8 +127,8 @@ widget_list = [
         popup_show_args={
             "relative_to": 7,
             "relative_to_bar": True,
-            "x": 12,
-            "y": -12,
+            "x": 16,
+            "y": -16,
         },
         text="",
         foreground=COLORSCHEME["RED"],

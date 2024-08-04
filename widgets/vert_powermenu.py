@@ -1,4 +1,5 @@
 from libqtile.widget import base
+from libqtile.command.base import expose_command
 from qtile_extras.widget.mixins import ExtendedPopupMixin
 
 
@@ -12,6 +13,10 @@ class V_Power(base._TextBox, ExtendedPopupMixin):
 
     def update_popup(self):
         self.extended_popup.update_controls()
+
+    @expose_command
+    def on_key(self, qtile):
+        self.show_popup(self)
 
     def calculate_length(self):
         if self.text:
