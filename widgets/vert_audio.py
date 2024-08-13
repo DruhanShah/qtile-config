@@ -12,10 +12,18 @@ class V_Audio(widget.PulseVolume, ExtendedPopupMixin):
         widget.PulseVolume.__init__(self, **config)
         ExtendedPopupMixin.__init__(self, **config)
         self.add_defaults(ExtendedPopupMixin.defaults)
-        self.add_callbacks({"Button1": self.show_popup})
+        self.mouse_callbacks["Button1"] = self.show_popup
 
     def update_popup(self):
-        self.extended_popup.update_controls()
+        mic_output = subprocess.check_output().decode("utf-8")
+
+        out_icon = "󰕿" if self.mute else "󰕾"
+        in_icon = "󰍭" if self.mute else "󰍬"
+
+        self.extended_popup.update_controls(
+            in_icon=in_icon,
+            out_icon=out_icon
+        )
 
     def _update_drawer(self):
         device_list = subprocess.check_output(

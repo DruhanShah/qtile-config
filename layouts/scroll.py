@@ -188,6 +188,7 @@ class Scrolling(base.Layout):
         c = self.cc
         if len(c) == 0:
             c.width = self.get_width(client)
+            self.maxwidth = c.width
         c.add_client(client)
 
     def remove(self, client):
@@ -412,6 +413,7 @@ class Scrolling(base.Layout):
         """
         if self.cc.width > self.grow_amount:
             self.cc.width -= self.grow_amount
+            self.maxwidth -= self.grow_amount
             self.group.layout_all()
 
     @expose_command()
@@ -421,6 +423,7 @@ class Scrolling(base.Layout):
         Grow the column rightwards without affecting other windows.
         """
         self.cc.width += self.grow_amount
+        self.maxwidth += self.grow_amount
         self.group.layout_all()
 
     @expose_command()

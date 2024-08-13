@@ -1,7 +1,7 @@
 from catppuccin import PALETTE
 import os
 
-file = os.path.expanduser("~/.config/rofi/theme")
+file = os.path.expanduser("~/.config/qtile/theme")
 with open(file, "r") as f:
     theme = f.read().strip()
 

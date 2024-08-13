@@ -44,6 +44,7 @@ layouts = [
         grow_amount=5,
         margin=16,
         width_rules={
+            Match(wm_class="emacs"): 45,
             Match(wm_class="kitty"): 45,
             Match(wm_class="Zathura"): 45,
             Match(wm_class="news_flash"): 75,
@@ -64,6 +65,7 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),
         Match(title="pinentry"),
         Match(title="file-picker"),
+        Match(title="temp-editor"),
         Match(wm_class="matplotlib"),
     ],
     border_focus=COLORSCHEME["SKY"],
@@ -132,7 +134,7 @@ keys = [
         Key([], "b", lazy.spawn("rofi-bluetooth")),
         Key([], "c", lazy.spawn("roficlip")),
         Key([], "q", lazy.spawn("rofi -show calc")),
-        Key([], "n", lazy.spawn(f"{rofi_script}/nerd-fonts.sh")),
+        Key([], "n", lazy.spawn("rofi -modi nerdy -show nerdy")),
         Key([], "z", lazy.spawn(f"{rofi_script}/zotero.sh")),
     ]),
 
@@ -197,5 +199,7 @@ def autostart():
 def resize(window):
     if window.match(Match(wm_class="mpv")):
         window.cmd_set_size_floating(1600, 900)
-    if window.match(Match(title="file-picker")):
+    elif window.match(Match(title="file-picker")):
         window.cmd_set_size_floating(1280, 720)
+    elif window.match(Match(title="temp-editor")):
+        window.cmd_set_size_floating(720, 240)

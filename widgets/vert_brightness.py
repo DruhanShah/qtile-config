@@ -20,7 +20,7 @@ class V_Bright(base._TextBox, ExtendedPopupMixin):
         val = round(int(g) / int(m), 3)
         percent = f"{int(val * 100)}%"
 
-        with open(f"{home}/.config/rofi/theme", "r") as f:
+        with open(f"{home}/.config/qtile/theme", "r") as f:
             theme = f.read().strip()
         if theme == "latte":
             mode_str = "Light mode"

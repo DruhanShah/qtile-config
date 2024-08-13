@@ -32,8 +32,8 @@ widget_list = [
         this_screen_border=COLORSCHEME["BLUE"],
         other_current_screen_border=COLORSCHEME["YELLOW"],
         other_screen_border=COLORSCHEME["YELLOW"],
-        padding=3,
-        fontsize=20,
+        padding=2,
+        fontsize=21,
     ),
     widget.TextBox(),
     widget.Spacer(
